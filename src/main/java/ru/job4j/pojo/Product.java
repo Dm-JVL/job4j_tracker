@@ -24,5 +24,25 @@ public class Product {
     public void setCount(int count) {
         this.count = count;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", count=" + count +
+                '}';
+    }
+
+
+    public static void Print(Product[] products){
+        for (int i = 0; i < products.length; i++) {
+            Product temp = products[i];
+            if (temp != null) {
+                System.out.println("Index: " + i + " " + temp.toString());
+            } else {
+                System.out.println("Index: " + i + " null");
+            }
+        }
+    }
 }
 
