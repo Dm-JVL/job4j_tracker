@@ -17,7 +17,7 @@ public class Shop {
         products[0] = new Product("Milk", 10);
         products[1] = new Product("Bread", 4);
         products[2] = new Product("Egg", 19);
-        System.out.println("Index: "+indexOfNull(products));
+        System.out.println("Index:  "+indexOfNull(products));
 
     }
 }
