@@ -17,7 +17,7 @@ public class Library {
         book[3] = temp;
         System.out.println("List2:");
         for (int i = 0; i < book.length; i++) {
-            if ((book[i].getName() != null) && book[i].getName().equals("Clean code")) {
+            if (book[i].getName().equals("Clean code")) {
                 System.out.println("№" + i + ": " + book[i].toString());
             }
         }

@@ -5,6 +5,8 @@ public class Book {
     private int countPage;
 
     public Book() {
+        this.countPage = 0;
+        this.name = "";
     }
 
     public String getName() {
