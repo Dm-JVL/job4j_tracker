@@ -15,8 +15,10 @@ public class Tracker {
 
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
-        items[index] = item;
-        item.setId(id);
+        if (index != -1) {
+            items[index] = item;
+            item.setId(id);
+        }
         return (index != -1);
     }
 
@@ -24,7 +26,7 @@ public class Tracker {
         int distPos = indexOf(id);
         int startPos = distPos + 1;
         int length = size - distPos;
-        if (distPos!=-1){
+        if (distPos != -1) {
             System.arraycopy(items, startPos, items, distPos, length);
             items[size - 1] = null;
             size--;
