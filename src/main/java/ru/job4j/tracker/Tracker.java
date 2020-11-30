@@ -26,9 +26,7 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        if (size != 0) {
-           return (Arrays.copyOf(items, size));
-        } else return null;
+        return (Arrays.copyOf(items, size));
     }
 
 
@@ -42,9 +40,7 @@ public class Tracker {
                 k++;
             }
         }
-        if (k != 0) {
-            return rsl;
-        } else return null;
+             return rsl;
     }
 
 }
