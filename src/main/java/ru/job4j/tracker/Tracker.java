@@ -13,14 +13,6 @@ public class Tracker {
         return item;
     }
 
-    public void showAll(Item [] itemsShow) {
-        for (int i = 0; i < itemsShow.length; i++) {
-            if (itemsShow[i] != null) {
-                System.out.println(itemsShow[i].toString());
-            } else System.out.println("Items №" + (i + 1) + " is empty!");
-        }
-    }
-
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
         if (index != -1) {
