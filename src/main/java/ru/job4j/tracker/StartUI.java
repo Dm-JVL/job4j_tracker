@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 public class StartUI {
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
-        String name = input.askStr("Enter name: ");
+        String name = input.askStr("Enter name: \n");
         Item item = new Item(name);
         tracker.add(item);
         System.out.println("Application added!\n");
