@@ -29,7 +29,7 @@ public class StartUI {
 
     public static void replaceItem(Input input, Tracker tracker) {
         int id = Integer.valueOf(input.askStr("=== Please enter item ID ====\n"));
-        Item item = new Item(0, input.askStr("=== Please enter item Name ====\n"));
+        Item item = new Item(input.askStr("=== Please enter item Name ====\n"));
         if (tracker.replace(id, item)) {
             System.out.println("Data edit completed!\n");
         } else {
