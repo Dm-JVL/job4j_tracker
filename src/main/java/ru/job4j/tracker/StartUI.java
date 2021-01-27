@@ -14,7 +14,7 @@ public class StartUI {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
             if (select < 0 || select > 6) {
-                System.out.println("Error. Try again!");
+                out.println("Error. Try again!");
             } else {
                 UserAction action = actions[select];
                 run = action.execute(input, tracker);
