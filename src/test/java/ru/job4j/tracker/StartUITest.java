@@ -60,6 +60,119 @@ public class StartUITest {
     }
 
     @Test
+    public void whenFindAllItems() {
+        Tracker tracker = new Tracker();
+        /* Добавим в tracker новые заявки */
+        Item[] items = {
+                new Item(0, "item 1"),
+                new Item(1, "item 2")
+        };
+        tracker.add(items[0]);
+        tracker.add(items[1]);
+
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0", "1"}
+        );
+        UserAction[] actions = {
+                new FindAllAction(out),
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertArrayEquals(tracker.findAll(), items);
+    }
+
+
+    @Test
+    public void whenFindByIdItemTrue() {
+        Tracker tracker = new Tracker();
+        /* Добавим в tracker новые заявки */
+        Item[] items = {
+                new Item("item 1"),
+                new Item("item 2")
+        };
+        tracker.add(items[0]);
+        tracker.add(items[1]);
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0", "0", "1"}
+        );
+        UserAction[] actions = {
+                new FindByIdAction(out),
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findById(items[0].getId()), is(items[0]));
+    }
+
+    @Test
+    public void whenFindByIdItemFalse() {
+        Tracker tracker = new Tracker();
+
+        Item[] items = {
+                new Item("item 1"),
+                new Item("item 2")
+        };
+        tracker.add(items[0]);
+        tracker.add(items[1]);
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0", "3", "1"}
+        );
+        UserAction[] actions = {
+                new FindByIdAction(out),
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findById(3), is(nullValue()));
+
+    }
+
+    @Test
+    public void whenFindByNameItemTrue() {
+        Tracker tracker = new Tracker();
+
+        Item[] items = {
+                new Item("item 1"),
+                new Item("item 2")
+        };
+        tracker.add(items[0]);
+        tracker.add(items[1]);
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0", "item 2", "1"}
+        );
+        UserAction[] actions = {
+                new FindByNameAction(out),
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findByName("item 2")[0], is(items[1]));
+    }
+
+    @Test
+    public void whenFindByNameItemFalse() {
+        Tracker tracker = new Tracker();
+
+        Item[] items = {
+                new Item("item 1"),
+                new Item("item 2")
+        };
+        tracker.add(items[0]);
+        tracker.add(items[1]);
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0", "item 3", "1"}
+        );
+        UserAction[] actions = {
+                new FindByNameAction(out),
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findByName("item 3").length, is(0));
+    }
+
+    @Test
     public void whenAddItem() {
         String[] answers = {"Fix PC"};
         Input input = new StubInput(answers);
