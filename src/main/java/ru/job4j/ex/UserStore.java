@@ -8,6 +8,7 @@ public class UserStore {
         for (int i = 0; i < users.length; i++) {
             if (login.equals(users[i].getUsername())) {
                 rsl = users[i];
+                break;
             }
         }
         if (rsl == null) {
