@@ -14,15 +14,19 @@ public class ReplaceAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-       out.println("=== Replace Item ===");
-        int id = Integer.valueOf(input.askStr("=== Please enter item ID ===="));
-        Item item = new Item(input.askStr("=== Please enter item Name ===="));
-        if (tracker.replace(id, item)) {
-            out.println("Data edit completed!");
-        } else {
-           out.println("Id not found!");
+        boolean run = true;
+        out.println("=== Replace Item ===");
+        try {
+            int id = Integer.valueOf(input.askStr("=== Please enter item ID ===="));
+            Item item = new Item(input.askStr("=== Please enter item Name ===="));
+            if (!tracker.replace(id, item)) {
+                out.println("Id not found! Please enter correct id again.");
+            } else {
+                out.println("Data edit completed!");
+            }
+        } catch (NumberFormatException nfe) {
+            out.println("Please enter validate id again.");
         }
         return true;
     }
-
 }
